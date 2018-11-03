@@ -1,10 +1,10 @@
 /* eslint no-restricted-globals: 'off' */
 // Turn duration of the movies from hours to minutes 
-function turnHoursToMinutes(movie){
-
+function turnHoursToMinutes(movies){
+  
   var newMoviesArray = movies.map(function(movie){
     arr = movie.duration.split(" ");
-    //[Xh, Xmin]
+    //console.log(arr);    //[Xh, Xmin]
     hour = arr.filter(function(el) {
       return el.indexOf("h") !== -1;
     })
@@ -26,13 +26,13 @@ function turnHoursToMinutes(movie){
       minutes = 0;
     }
     result = parseInt(hour*60) + parseInt(minutes);
-    return {duration : result}
+    nuevo = Object.assign({}, movie);
+    nuevo.duration = result;
+    return nuevo;
   })
   //console.log(newMoviesArray)
   return newMoviesArray
 }
-
-turnHoursToMinutes(movies);
 
 // Get the average of all rates with 2 decimals 
 
